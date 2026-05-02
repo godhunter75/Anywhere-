@@ -1,0 +1,18 @@
+{
+  "name": "anywhere-chat",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "node server.js",
+    "build": "echo 'No build step'",
+    "preview": "node server.js",
+    "clean": "rm -rf dist",
+    "start": "node server.js",
+    "lint": "echo 'No lint'"
+  },
+  "dependencies": {
+    "express": "^4.21.2",
+    "socket.io": "^4.8.3"
+  }
+}

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>AnywhereChat - Anonymous Text & Video</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Load Font (Inter) -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="app">
+        <!-- Landing State -->
+        <main id="landing-state" class="active">
+            <div class="landing-container">
+                <h1 class="logo">AnywhereChat</h1>
+                <p class="subtitle">Anonymous, zero-friction, 1-on-1 text and video.</p>
+                
+                <div class="input-group">
+                    <label for="interests-input">Interests (optional, comma-separated)</label>
+                    <input type="text" id="interests-input" placeholder="e.g. gaming, anime, music">
+                </div>
+                
+                <div class="controls-group">
+                    <button id="start-chat-btn" class="primary-btn">Start Chatting</button>
+                    <!-- Small loading indicator when matching -->
+                    <div id="matching-status" class="hidden">Looking for a stranger...</div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Active Chat State -->
+        <main id="chat-state" class="hidden">
+            <!-- Split screen for video on top (hidden if text only) -->
+            <div id="video-container" class="hidden">
+                <div class="video-wrapper">
+                    <video id="remote-video" autoplay playsinline></video>
+                    <div class="video-label">Stranger</div>
+                </div>
+                <div class="video-wrapper local-wrapper">
+                    <video id="local-video" autoplay playsinline muted></video>
+                    <div class="video-label">You</div>
+                </div>
+            </div>
+
+            <!-- Chat interface -->
+            <div id="chat-container">
+                <div id="chat-log">
+                    <div class="system-msg">Connecting to server...</div>
+                </div>
+                <div class="chat-input-area">
+                    <button id="leave-btn" class="danger-btn" title="Leave chat or press ESC">Leave / Next</button>
+                    <input type="text" id="chat-message-input" placeholder="Type a message..." disabled>
+                    <button id="send-btn" class="primary-btn" disabled>Send</button>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Required Scripts -->
+    <!-- Socket.IO comes from the server -->
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="client.js"></script>
+</body>
+</html>
